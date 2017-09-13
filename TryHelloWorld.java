@@ -18,10 +18,27 @@ class TryHelloWorld {
         return answer;
     }
 
+    public int getMinSum(int []A, int []B)
+    {
+        Arrays.sort(A);
+        Arrays.sort(B);
+        int answer = 0;
+        for (int i = 0; i < A.length; i++) {
+            answer+=A[i]*B[B.length-i-1];
+        }
+
+        return answer;
+    }
+
     // 아래는 테스트로 출력해 보기 위한 코드입니다.
     public static void main(String[] args) {
         TryHelloWorld c = new TryHelloWorld();
         System.out.println(Arrays.toString(c.gcdlcm(3, 12)));
+
+        TryHelloWorld test = new TryHelloWorld();
+        int []A = {1,2};
+        int []B = {3,4};
+        System.out.println(test.getMinSum(A, B));
     }
 }
 

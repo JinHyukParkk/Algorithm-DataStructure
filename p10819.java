@@ -1,25 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
- * Created by jinhyuk on 2017. 6. 28..
+ * Created by jinhyuk on 2017. 9. 11..
  */
 public class p10819 {
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    int n;
+    int arr[];
     public static boolean next_permutation(int[] a) {
         int i = a.length-1;
-        while (i > 0 && a[i-1] >= a[i]) {
-            i -= 1;
-        }
-
+        while (i > 0 && a[i-1] >= a[i]) i -= 1;
         // 마지막 순열
-        if (i <= 0) {
-            return false;
-        }
+        if (i <= 0) return false;
 
         int j = a.length-1;
-        while (a[j] <= a[i-1]) {
-            j -= 1;
-        }
+        while (a[j] <= a[i-1]) j -= 1;
 
         int temp = a[i-1];
         a[i-1] = a[j];
@@ -35,27 +33,38 @@ public class p10819 {
         }
         return true;
     }
-    public static int calculate(int arr[]){
-        int sum =0;
+    void input() throws IOException{
+        n = Integer.parseInt(bufferedReader.readLine());
+        arr = new int[n];
+        String str[] = bufferedReader.readLine().split(" ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(str[i]);
+        }
+    }
+    void findMax(){
+        Arrays.sort(arr);
+        int res = 0;
+        do{
+            int t = abs(arr);
+            res = Math.max(t,res);
+        }while(next_permutation(arr));
+        System.out.println(res);
+    }
+    int abs(int[] a){
+        int sum = 0;
         for (int i = 1; i < arr.length; i++) {
-            sum += Math.abs(arr[i-1]-arr[i]);
+            sum += Math.abs(a[i]-a[i-1]);
         }
         return sum;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int arr[] = new int[n];
-        for (int i = 0; i <n ; i++) {
-            arr[i] = scanner.nextInt();
+        p10819 test = new p10819();
+        try{
+            test.input();
+            test.findMax();
+        }catch(IOException e){
+            e.printStackTrace();
         }
-        Arrays.sort(arr);
-        int ans = 0;
-        do{
-            int temp = calculate(arr);
-            ans = Math.max(ans, temp);
-        } while(next_permutation(arr));
-
-        System.out.println(ans);
     }
+
 }

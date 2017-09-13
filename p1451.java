@@ -1,82 +1,88 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
- * Created by jinhyuk on 2017. 6. 28..
+ * Created by jinhyuk on 2017. 9. 9..
  */
 public class p1451 {
-    public static int arr[][];
-    public static long s[][];
-    public static long sum(int x1, int y1, int x2, int y2){
-        return s[x2][y2] - s[x2][y1-1] - s[x1-1][y2] + s[x1-1][y1-1];
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    int arr[][];
+    long s[][];
+    int n,m;
+    long poSum(int x, int y, int x1, int y1){
+        return s[x1][y1]-s[x-1][y1]-s[x1][y-1]+s[x-1][y-1];
     }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        sc.nextLine();
+    void input() throws IOException{
+        String str[] = bufferedReader.readLine().split(" ");
+        n = Integer.parseInt(str[0]);
+        m = Integer.parseInt(str[1]);
         arr = new int[n+1][m+1];
-        for (int i=1; i<=n; i++) {
-            String line = " " + sc.nextLine();
-            System.out.println(line);
-            for (int j=1; j<=m; j++) {
-                arr[i][j] = line.charAt(j) - '0';
-            }
-        }
         s = new long[n+1][m+1];
         for (int i = 1; i <= n; i++) {
+            String num = bufferedReader.readLine();
             for (int j = 1; j <= m; j++) {
-                s[i][j] = s[i][j - 1] + s[i - 1][j] - s[i - 1][j - 1] + (long) arr[i][j];
+                arr[i][j] = num.charAt(j-1)-'0';
             }
         }
+        for (int i = 1; i <=n; i++) {
+            for (int j = 1; j <= m ; j++) {
+                s[i][j] = s[i-1][j]+s[i][j-1]-s[i-1][j-1]+(long)arr[i][j];
+            }
+        }
+    }
+    void findMax(){
         long ans = 0;
-        for (int i = 1; i <= m-2; i++) {
-            for (int j = i+1; j <=m-1 ; j++) {
-                long r1 = sum(1, 1, n, i);
-                long r2 = sum(1, i + 1, n, j);
-                long r3 = sum(1, j + 1, n, m);
-                if (ans < r1 * r2 * r3) {
-                    ans = r1 * r2 * r3;
-                }
+        for (int i = 1; i <= n-2 ; i++) {
+            for (int j = i+1; j <= n-1 ; j++) {
+                long r1 = poSum(1,1,i,m);
+                long r2 = poSum(i+1,1,j,m);
+                long r3 = poSum(j+1,1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
             }
         }
-        for (int i = 1; i <=n-2 ; i++) {
+        for (int i = 1; i <= m-2 ; i++) {
+            for (int j = 1; j <= m-1 ; j++) {
+                long r1 = poSum(1,1,n,i);
+                long r2 = poSum(1,i+1,n,j);
+                long r3 = poSum(1,j+1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
+
+            }
+        }
+        for (int i = 1; i <=m-1 ; i++) {
             for (int j = 1; j <=n-1 ; j++) {
-                long r1 = sum(1, 1, i, m);
-                long r2 = sum(i + 1, 1, j, m);
-                long r3 = sum(j + 1, 1, n, m);
-                if (ans < r1 * r2 * r3) {
-                    ans = r1 * r2 * r3;
-                }
-            }
-        }
-        for (int i=1; i<=n-1; i++) {
-            for (int j=1; j<=m-1; j++) {
-                long r1 = sum(1,1,n,j);
-                long r2 = sum(1,j+1,i,m);
-                long r3 = sum(i+1,j+1,n,m);
-                if (ans < r1*r2*r3) {
-                    ans = r1*r2*r3;
-                }
-                r1 = sum(1,1,i,j);
-                r2 = sum(i+1,1,n,j);
-                r3 = sum(1,j+1,n,m);
-                if (ans < r1*r2*r3) {
-                    ans = r1*r2*r3;
-                }
-                r1 = sum(1,1,i,m);
-                r2 = sum(i+1,1,n,j);
-                r3 = sum(i+1,j+1,n,m);
-                if (ans < r1*r2*r3) {
-                    ans = r1*r2*r3;
-                }
-                r1 = sum(1,1,i,j);
-                r2 = sum(1,j+1,i,m);
-                r3 = sum(i+1,1,n,m);
-                if (ans < r1*r2*r3) {
-                    ans = r1*r2*r3;
-                }
+                long r1 = poSum(1,1,n,i);
+                long r2 = poSum(1,i+1,j,m);
+                long r3 = poSum(j+1,i+1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
+
+                r1 = poSum(1,1,j,m);
+                r2 = poSum(j+1,1,n,i);
+                r3 = poSum(j+1,i+1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
+
+                r1 = poSum(1,1,j,i);
+                r2 = poSum(j+1,1,n,i);
+                r3 = poSum(1,i+1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
+
+                r1 = poSum(1,1,j,i);
+                r2 = poSum(1,i+1,j,m);
+                r3 = poSum(j+1,1,n,m);
+                if(ans<r1*r2*r3) ans = r1*r2*r3;
             }
         }
         System.out.println(ans);
+    }
+    
+    public static void main(String[] args) {
+        p1451 test = new p1451();
+        try{
+            test.input();
+            test.findMax();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
