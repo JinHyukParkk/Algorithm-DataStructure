@@ -1,42 +1,58 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
- * Created by jinhyuk on 2017. 6. 29..
+ * Created by jinhyuk on 2017. 9. 16..
  */
 public class p1697 {
-    public static final int MAX_VALUE = 1000000;
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    Queue<Integer> queue = new LinkedList<Integer>();
+    int max_value = 1000000;
+    boolean check[];
+    int dis[];
+    int m,n;
 
-        int old = scanner.nextInt();
-        int young = scanner.nextInt();
-
-        Queue<Integer> q = new LinkedList<Integer>();
-
-        boolean check[] = new boolean[MAX_VALUE];
-        int dis[] = new int[MAX_VALUE];
-        q.add(old);
-        while(!q.isEmpty()){
-            int now = q.remove();
-            if(young == now){
-                break;
+    void input() throws IOException{
+        String string[] = bufferedReader.readLine().split("\\s+");
+        m = Integer.parseInt(string[0]);
+        n = Integer.parseInt(string[1]);
+        check = new boolean[max_value];
+        dis = new int[max_value];
+    }
+    int findmin(){
+        queue.offer(m);
+        while(!queue.isEmpty()){
+            int temp = queue.poll();
+            if(temp == n) break;
+            if(temp-1>=0 && check[temp-1]==false){
+                queue.offer(temp-1);
+                check[temp-1] = true;
+                dis[temp-1] = dis[temp]+1;
             }
-            if(now-1>=0 && check[now-1]== false) {
-                q.add(now - 1);
-                check[now - 1] = true;
-                dis[now - 1] = dis[now] + 1;
+            if(temp+1<max_value && check[temp+1]==false){
+                queue.offer(temp+1);
+                check[temp+1] = true;
+                dis[temp+1] = dis[temp]+1;
             }
-            if(now+1<MAX_VALUE && check[now+1]==false) {
-                q.add(now + 1);
-                check[now + 1] = true;
-                dis[now + 1] = dis[now] + 1;
-            }
-            if(2*now < MAX_VALUE && check[2*now] == false){
-                q.add(2*now);
-                check[2*now] = true;
-                dis[2*now] = dis[now] + 1;
+            if(temp*2<max_value && check[2*temp]==false){
+                queue.offer(temp*2);
+                check[temp*2] = true;
+                dis[temp*2] = dis[temp]+1;
             }
         }
-        System.out.println(dis[young]);
+        return dis[n];
+    }
+    public static void main(String[] args) {
+        p1697 test = new p1697();
+        try{
+            test.input();
+            System.out.println(test.findmin());
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
     }
 }
