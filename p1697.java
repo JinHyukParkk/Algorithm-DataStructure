@@ -3,12 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 /**
  * Created by jinhyuk on 2017. 9. 16..
  */
 public class p1697 {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer stringTokenizer;
     Queue<Integer> queue = new LinkedList<Integer>();
     int max_value = 1000000;
     boolean check[];
@@ -16,9 +18,10 @@ public class p1697 {
     int m,n;
 
     void input() throws IOException{
-        String string[] = bufferedReader.readLine().split("\\s+");
-        m = Integer.parseInt(string[0]);
-        n = Integer.parseInt(string[1]);
+        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+//        String string[] = bufferedReader.readLine().split("\\s+");
+        m = Integer.parseInt(stringTokenizer.nextToken());
+        n = Integer.parseInt(stringTokenizer.nextToken());
         check = new boolean[max_value];
         dis = new int[max_value];
     }
