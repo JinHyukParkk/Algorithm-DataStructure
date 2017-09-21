@@ -5,26 +5,16 @@ import java.io.InputStreamReader;
 /**
  * Created by jinhyuk on 2017. 9. 20..
  */
-public class p2577 {
+public class p3053 {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    int arr[] = new int[10];
+    int n;
     void input() throws IOException{
-        int sum = 1;
-        for (int i = 0; i <3 ; i++) {
-            sum*=Integer.parseInt(bufferedReader.readLine().replaceAll(" ",""));
-        }
-        while(sum!=0){
-            arr[sum%10]+=1;
-            sum/=10;
-        }
-        for (int i = 0; i < 10; i++) {
-            System.out.println(arr[i]);
-        }
-
+        n = Integer.parseInt(bufferedReader.readLine());
+        System.out.format("%.6f\n", n * n * Math.PI);
+        System.out.format("%.6f\n",(double)n*n*2);
     }
-
     public static void main(String[] args) {
-        p2577 test = new p2577();
+        p3053 test = new p3053();
         try{
             test.input();
         }catch(IOException e){
