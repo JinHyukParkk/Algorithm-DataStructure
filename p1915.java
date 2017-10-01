@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
  * Created by jinhyuk on 2017. 9. 22..
  */
 public class p1915 {
+    // 정사각형 찾기 DP 문제.
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer stringTokenizer;
     int arr[][];

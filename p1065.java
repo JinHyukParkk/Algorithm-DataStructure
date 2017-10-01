@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
  * Created by jinhyuk on 2017. 9. 22..
  */
 public class p1065 {
+    // 자리수가 등차수열을 이루는 한수 문제
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     int n,h,t,o;
     void input() throws IOException{

@@ -5,29 +5,43 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * Created by jinhyuk on 2017. 9. 22..
+ * Created by jinhyuk on 2017. 10. 1..
  */
-public class p11004 {
-    //오름차순해서 해당 idx값 찾기 . 정렬문제
+public class p7469 {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer stringTokenizer;
-    int n, k;
+    int n,m;
     int arr[];
+    int a,b,k;
+    int res[];
+
     void input() throws IOException{
         stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         n = Integer.parseInt(stringTokenizer.nextToken());
-        k = Integer.parseInt(stringTokenizer.nextToken());
+        m = Integer.parseInt(stringTokenizer.nextToken());
         arr = new int[n];
         stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        for (int i = 0; i <n ; i++) {
+        for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(stringTokenizer.nextToken());
         }
-        Arrays.sort(arr);
-        System.out.println(arr[k-1]);
+        for (int i = 0; i <m ; i++) {
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
+            a = Integer.parseInt(stringTokenizer.nextToken());
+            b = Integer.parseInt(stringTokenizer.nextToken());
+            k = Integer.parseInt(stringTokenizer.nextToken());
+            solve();
+        }
+    }
 
+    void solve(){
+        res = new int[b-a+1];
+        for (int i = a-1; i <b; i++) {
+            res[i-a+1] = arr[i];
+        }
+        Arrays.sort(res);
     }
     public static void main(String[] args) {
-        p11004 test =new p11004();
+        p7469 test = new p7469();
         try{
             test.input();
         }catch(IOException e){

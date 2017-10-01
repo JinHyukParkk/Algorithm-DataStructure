@@ -7,6 +7,7 @@ import java.util.Arrays;
  * Created by jinhyuk on 2017. 9. 22..
  */
 public class p2309 {
+    //일곱난장이 문제. 간단한 정렬.
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     int arr[] = new int[9];
     void input() throws IOException{

@@ -4,7 +4,7 @@ import java.util.Arrays;
  * Created by jinhyuk on 2017. 9. 21..
  */
 public class NoOvertime {
-    // 반복문에 max값 찾기₩
+    // 반복문에 max값 찾기
     public int noOvertime(int no, int[] works) {
         while(no!=0){
             Arrays.sort(works);
