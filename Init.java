@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
  */
 public class Init {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
     void start(){
         try{
             input();
@@ -23,7 +22,6 @@ public class Init {
     void sovle(){
 
     }
-
 
     public static void main(String[] args) {
 
