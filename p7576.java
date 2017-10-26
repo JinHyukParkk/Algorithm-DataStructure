@@ -54,7 +54,7 @@ public class p7576 {
         }
         int ans = Integer.MIN_VALUE;
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < n; j++) {
                 if(arr[i][j]==0){
                     System.out.println("-1");
                     return;
