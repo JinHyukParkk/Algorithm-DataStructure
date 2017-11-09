@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by jinhyuk on 2017. 11. 2..
+ * Created by jinhyuk on 2017. 11. 1..
  */
-public class p12796 {
+public class p11778 {
     Myscanner sc = new Myscanner();
     PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
     StringBuilder sb = new StringBuilder("");
-
-    int n;
+    long a,b;
+    long fibo[];
     void start(){
         try{
             input();
@@ -19,15 +19,27 @@ public class p12796 {
         }
     }
     void input() throws IOException {
-        n = sc.nextInt();
+        a = sc.nextLong();
+        b = sc.nextLong();
     }
     void sovle(){
-        sb.append(3+"\n"+1+" "+1+" "+1+" "+(n+1));
-        System.out.println(sb.toString());
+        long max = (a>b?a : b);
+        fibo = new long[(int)max+1];
+        fibo[0] = 0;
+        fibo[1] = 1;
+        for (int i = 2; i <=max; i++) {
+            fibo[i] = fibo[i-1]+fibo[i-2];
+            fibo[i]%=1000000007;
+        }
+        System.out.println(gcd(fibo[(int)a],fibo[(int)b]));
+    }
+    long gcd(long p,long q){
+        if(p%q==0) return q;
+        else return gcd(q,p%q);
     }
 
     public static void main(String[] args) {
-        new p12796().start();
+        new p11778().start();
     }
     class Myscanner {
         BufferedReader br;
@@ -61,4 +73,5 @@ public class p12796 {
         }
     }
 }
+
 

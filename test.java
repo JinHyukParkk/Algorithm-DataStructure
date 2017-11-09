@@ -1,56 +1,82 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+public class Test {
 
-/**
- * Created by jinhyuk on 2017. 9. 16..
- */
-public class test {
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    StringBuilder stringBuilder = new StringBuilder("");
-    int n;
-    int arr[], arr1[];
-    int res[];
-    void input() throws IOException{
-        n = Integer.parseInt(bufferedReader.readLine());
-        arr = new int[n+1];
-        arr1 = new int[n+1];
-        res = new int[n+1];
-        String a[] = bufferedReader.readLine().split("\\s+");
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(a[i]);
+    static Myscanner sc = new Myscanner();
+    static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+
+    public static void main(String[] args) throws IOException {
+
+        int TC = sc.nextInt();
+        ArrayList<Time> al = new ArrayList<Time>();
+
+        while (TC-- > 0) {
+            int S = sc.nextInt();
+            int E = sc.nextInt();
+            al.add(new Time(S, E));
         }
-        String ar[] = bufferedReader.readLine().split("\\s+");
-        for (int i = 0; i < n; i++) {
-            arr1[i] = Integer.parseInt(ar[i]);
-        }
-    }
-    void print(){
-        for (int i = 0; i < n; i++) {
-            res[i] = arr[i] | arr1[i];
-            String a = Integer.toBinaryString(res[i]);
-            int d = 5-a.length();
-            for (int j = 0; j <d ; j++) stringBuilder.append(" ");
-            for (int j = 0; j < a.length(); j++) {
-                if(a.charAt(j) == '1'){
-                    stringBuilder.append("#");
-                }else{
-                    stringBuilder.append(" ");
-                }
+        Collections.sort(al);
+
+        int count = 0;
+        int start = -1;
+        for (int j = 0; j < al.size(); j++) {
+            if (al.get(j).S >= start) {
+                start = al.get(j).E;
+                count++;
             }
-            stringBuilder.append("\n");
         }
-        System.out.println(stringBuilder.toString());
 
-    }
-    public static void main(String[] args) {
-        test test = new test();
-        try{
-            test.input();
-            test.print();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        out.println(count);
+        out.flush();
     }
 }
+class Myscanner {
+    BufferedReader br;
+    StringTokenizer st;
+
+    Myscanner() {
+        br = new BufferedReader(new InputStreamReader(System.in));
+    }
+
+    String next() {
+        while (st == null || !st.hasMoreElements()) {
+            try {
+                st = new StringTokenizer(br.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return st.nextToken();
+    }
+
+    int nextInt() {
+        return Integer.parseInt(next());
+    }
+
+    long nextLong() {
+        return Long.parseLong(next());
+    }
+
+    double nextDouble() {
+        return Double.parseDouble(next());
+    }
+}
+class Time implements Comparable<Time> {
+    int S, E;
+
+    Time(int S, int E) {
+        this.S = S;
+        this.E = E;
+    }
+
+    @Override
+    public int compareTo(Time o) {
+        return this.S <= o.S ? -1 : 1;
+    }
+
+}
+
+

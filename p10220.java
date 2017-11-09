@@ -2,18 +2,21 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by jinhyuk on 2017. 11. 2..
+ * Created by jinhyuk on 2017. 11. 1..
  */
-public class p12796 {
+public class p10220 {
     Myscanner sc = new Myscanner();
     PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
     StringBuilder sb = new StringBuilder("");
-
     int n;
     void start(){
         try{
-            input();
-            sovle();
+            int tc = sc.nextInt();
+            for (int i = 0; i < tc; i++) {
+                input();
+                sovle();
+            }
+
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -22,12 +25,17 @@ public class p12796 {
         n = sc.nextInt();
     }
     void sovle(){
-        sb.append(3+"\n"+1+" "+1+" "+1+" "+(n+1));
-        System.out.println(sb.toString());
+        if(n == 1 || n == 2 || n == 3 || n == 6){
+            System.out.println("0");
+        }else if(n == 4){
+            System.out.println("2");
+        }else{
+            System.out.println("1");
+        }
     }
 
     public static void main(String[] args) {
-        new p12796().start();
+        new p10220().start();
     }
     class Myscanner {
         BufferedReader br;
@@ -61,4 +69,3 @@ public class p12796 {
         }
     }
 }
-

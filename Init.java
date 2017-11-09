@@ -2,14 +2,13 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by jinhyuk on 2017. 11. 2..
+ * Created by jinhyuk on 2017. 10. 17..
  */
-public class p12796 {
+public class Init {
     Myscanner sc = new Myscanner();
     PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
     StringBuilder sb = new StringBuilder("");
 
-    int n;
     void start(){
         try{
             input();
@@ -19,15 +18,14 @@ public class p12796 {
         }
     }
     void input() throws IOException {
-        n = sc.nextInt();
+
     }
     void sovle(){
-        sb.append(3+"\n"+1+" "+1+" "+1+" "+(n+1));
-        System.out.println(sb.toString());
+
     }
 
     public static void main(String[] args) {
-        new p12796().start();
+
     }
     class Myscanner {
         BufferedReader br;
@@ -61,4 +59,3 @@ public class p12796 {
         }
     }
 }
-
