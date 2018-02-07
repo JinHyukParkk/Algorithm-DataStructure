@@ -25,6 +25,3 @@ func day8() {
 		}
 	}
 }
-func main() {
-	day8()
-}
