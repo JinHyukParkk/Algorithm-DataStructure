@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func day9(n int) int {
 	if n == 1 {
 		return n
@@ -12,8 +8,9 @@ func day9(n int) int {
 	}
 
 }
-func main() {
-	var n int
-	fmt.Scan(&n)
-	fmt.Println(day9(n))
-}
+
+// func main() {
+// 	var n int
+// 	fmt.Scan(&n)
+// 	fmt.Println(day9(n))
+// }
