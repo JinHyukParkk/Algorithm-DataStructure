@@ -31,7 +31,3 @@ func dec2bin(dec int) string {
 	}
 	return bin
 }
-func main() {
-	//Enter your code here. Read input from STDIN. Print output to STDOUT
-	day10()
-}
