@@ -43,8 +43,3 @@ func day11() {
 	}
 	fmt.Println(max)
 }
-
-func main() {
-	day11()
-
-}
