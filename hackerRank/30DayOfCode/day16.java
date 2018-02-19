@@ -5,7 +5,6 @@ import java.math.*;
 import java.util.regex.*;
 
 public class day16 {
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String S = in.next();
