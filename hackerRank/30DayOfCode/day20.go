@@ -24,6 +24,3 @@ func day20() {
 	fmt.Println("First Element:", arr[0])
 	fmt.Println("Last Element:", arr[n-1])
 }
-func main() {
-	day20()
-}

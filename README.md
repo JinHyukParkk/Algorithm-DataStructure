@@ -5,5 +5,3 @@
 2. [HackerRank](https://www.hackerrank.com/dashboard)
 
 ### * 자료구조는 Go언어를 사용하여 구현하였습니다.
-
-1. 
