@@ -31,6 +31,3 @@ func IsPrime(n int) string {
 	}
 	return "Prime"
 }
-func main() {
-	day25()
-}
