@@ -47,7 +47,3 @@ func day26() {
 	}
 	fmt.Println(fine)
 }
-
-func main() {
-	day26()
-}
