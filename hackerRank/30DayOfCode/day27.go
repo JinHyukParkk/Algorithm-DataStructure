@@ -22,6 +22,3 @@ func day27() {
 	fmt.Println("7 6")
 	fmt.Println("-1 -3 1 3 3 4 5")
 }
-func main() {
-	day27()
-}
