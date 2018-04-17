@@ -8,8 +8,6 @@ public class p1965 {
         StringTokenizer st;
         StringBuilder sb = new StringBuilder("");
 
-
-
         int n = Integer.parseInt(br.readLine());
         int arr[] = new int[n];
         int dp[] = new int[n];
