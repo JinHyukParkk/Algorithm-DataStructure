@@ -1,50 +1,50 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-/**
- * Created by jinhyuk on 2017. 11. 8..
- */
 public class p10942 {
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-    StringTokenizer stringTokenizer;
-    StringBuilder stringBuilder = new StringBuilder("");
 
-    int n;
-    boolean dp[][];
-    int arr[];
-    void start(){
-        try{
-            input();
-            solve();
-            bufferedWriter.write(stringBuilder.toString());
-            bufferedWriter.flush();
-        }catch(IOException e){
-            e.printStackTrace();
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder("");
+
+        int n = Integer.parseInt(br.readLine());
+        int arr[] = new int[n+1];
+        boolean dp[][] = new boolean[n+1][n+1];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 1; i <= n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-    }
-    void input() throws IOException{
-        n = Integer.parseInt(bufferedReader.readLine());
-        arr = new int[n];
-        dp = new boolean[n][n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(bufferedReader.readLine());
-            dp[i][i] = true;
-        }
-        for (int i = 0; i <n-1 ; i++) {
-            if(arr[i] == arr[i+1]){
-                dp[i][i+1] = true;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if(i == j){
+                    dp[j][i] = true;
+                    continue;
+                }
+                if(i-1 == j){
+                    if(arr[i] == arr[j]){
+                        dp[j][i] = true;
+                        continue;
+                    }
+                }
+                if(arr[j] == arr[i] && dp[j+1][i-1]){
+                    dp[j][i] = true;
+                }
             }
         }
-
-
-    }
-    void solve(){
-
-    }
-
-    public static void main(String[] args) {
-        new p10942().start();
+        int m = Integer.parseInt(br.readLine());
+        for (int i = 0; i < m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+            if(dp[s][e]){
+                sb.append(1+"\n");
+            }else{
+                sb.append(0+"\n");
+            }
+        }
+        bw.write(sb.toString());
+        bw.close();
     }
 }
-
