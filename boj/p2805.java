@@ -9,6 +9,7 @@ public class p2805 {
         StringTokenizer st;
         StringBuilder sb = new StringBuilder("");
 
+
         int arr[];
         int right = 0;
         int left = 0;

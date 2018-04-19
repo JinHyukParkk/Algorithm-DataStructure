@@ -29,7 +29,7 @@ public class p14501 {
         }
         int max = 0;
         for (int i = 1; i <= n; i++) {
-            if(i+arr[i][0] <= n+1){ 
+            if(i+arr[i][0] <= n+1){
                 max = Math.max(max,dp[i]);
             }
         }
