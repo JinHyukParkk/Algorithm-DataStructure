@@ -10,7 +10,7 @@ public class p2098 {
     static final int INF = 1000000000;
 
     static int getPath(int cur, int visit){
-        if(visit == (1<<n) - 1){
+        if(visit == (1<<n) -1){
             return arr[cur][1];
         }
         if(dp[cur][visit] >= 0){
