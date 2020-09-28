@@ -12,8 +12,8 @@ func Multiplication() {
 			result += nB
 		}
 
-		nA /= 2
-		nB *= 2
+		nA >>= 1 // nA /= 2
+		nB <<= 1 // nB *= 2
 	}
 
 	fmt.Println(result)
