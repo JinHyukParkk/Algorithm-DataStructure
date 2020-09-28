@@ -17,5 +17,4 @@ func main() {
 	tree.PrintNode(t.Node)
 	fmt.Println(t.Node.ExistsNode(4))
 	fmt.Println(t.Node.ExistsNode(3))
-
 }
