@@ -8,7 +8,7 @@ func Multiplication() {
 	fmt.Scan(&nA, &nB)
 
 	for nA >= 1 {
-		if nA%2 == 1 {
+		if nA&1 == 1 {
 			result += nB
 		}
 
