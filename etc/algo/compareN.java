@@ -9,10 +9,9 @@ public class compareN {
         int C[] = new int[size];
 
         for (int i = 0; i < size; i++) {
-            System.out.println("a :" + A[i] + "   B:" + B );
             if (A[i] != B[i]) {
                 C[i] = Math.max(A[i], B[i]);
-                // ans = Math.min(ans, Math.min(A[i], B[i]));
+                ans = Math.min(ans, Math.min(A[i], B[i]));
             }
             C[i] = A[i];
         }
