@@ -2,11 +2,10 @@ package graph
 
 import (
 	"fmt"
-	"strings"
 )
 
 
-func Contains(a []string, x string) bool {
+func Contains(a []int, x int) bool {
 	for _, n := range a {
 		if x == n {
 			return true
@@ -17,33 +16,29 @@ func Contains(a []string, x string) bool {
 
 func search(start int, graph map[int][]int) bool {
 
-	var search_queue = []string{}
+	var search_queue = []int{}
 
 	search_queue = append(search_queue, graph[start]...)
-	var serarched = []string{}
+	var serarched = []int{}
 
 	for len(search_queue) > 0 {
-		person := search_queue[len(search_queue)-1 : len(search_queue)]
+		arrayN := search_queue[len(search_queue)-1 : len(search_queue)]
 		search_queue = search_queue[:len(search_queue)-1]
-		//pop
-		fmt.Println(person[0] + " is a pop")
-		if !Contains(serarched, person[0]) {
-			fmt.Println("inner contains")
-			if person_is_sellor(person[0]) {
-				fmt.Println(person[0] + " is a mango seller!")
+	
+		if !Contains(serarched, arrayN[0]) {
+			if findVal(arrayN[0]) {
 				return true
 			} else {
-				search_queue = append(search_queue, graph[person[0]]...)
-				serarched = append(serarched, person[0])
+				search_queue = append(search_queue, graph[arrayN[0]]...)
+				serarched = append(serarched, arrayN[0])
 			}
 		}
 
 	}
 	return false
 }
-func person_is_sellor(name string) bool {
-
-	return strings.EqualFold(name[len(name)-1:len(name)], "m")
+func findVal(val int) bool {
+	return val == 5;
 
 }
 func main() {
