@@ -5,7 +5,7 @@ import (
 )
 
 
-func Contains(a []int, x int) bool {
+func contains(a []int, x int) bool {
 	for _, n := range a {
 		if x == n {
 			return true
@@ -25,7 +25,7 @@ func search(start int, graph map[int][]int) bool {
 		arrayN := search_queue[len(search_queue)-1 : len(search_queue)]
 		search_queue = search_queue[:len(search_queue)-1]
 	
-		if !Contains(serarched, arrayN[0]) {
+		if !contains(serarched, arrayN[0]) {
 			if findVal(arrayN[0]) {
 				return true
 			} else {
