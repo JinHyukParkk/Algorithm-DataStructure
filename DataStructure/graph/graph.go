@@ -16,20 +16,20 @@ func contains(a []int, x int) bool {
 
 func search(start int, graph map[int][]int) bool {
 
-	var search_queue = []int{}
+	var queue = []int{}
 
-	search_queue = append(search_queue, graph[start]...)
+	queue = append(queue, graph[start]...)
 	var serarched = []int{}
 
-	for len(search_queue) > 0 {
-		arrayN := search_queue[len(search_queue)-1 : len(search_queue)]
-		search_queue = search_queue[:len(search_queue)-1]
+	for len(queue) > 0 {
+		arrayN := queue[len(queue)-1 : len(queue)]
+		queue = queue[:len(queue)-1]
 	
 		if !contains(serarched, arrayN[0]) {
 			if findVal(arrayN[0]) {
 				return true
 			} else {
-				search_queue = append(search_queue, graph[arrayN[0]]...)
+				queue = append(queue, graph[arrayN[0]]...)
 				serarched = append(serarched, arrayN[0])
 			}
 		}
