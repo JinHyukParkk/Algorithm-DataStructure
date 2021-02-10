@@ -13,5 +13,11 @@ func main() {
 	fmt.Println(person.GetName())
 	person.SetName("hyuk2")
 	fmt.Println(person.GetName())
+	person.Check()
 
+	man := oop.NewMan("hyuk")
+	fmt.Println(man.GetName())
+	man.SetName("hyuk2")
+	fmt.Println(man.GetName())
+	man.Check()
 }

@@ -1,5 +1,7 @@
 package oop
 
+import "fmt"
+
 type Person struct {
 	name string
 }
@@ -17,4 +19,8 @@ func (person Person) GetName() string {
 // set의 경우 포인터 필요
 func (person *Person) SetName(name string) {
 	person.name = name
+}
+
+func (person Person) Check() {
+	fmt.Printf("%s is a person\n", person.name)
 }
