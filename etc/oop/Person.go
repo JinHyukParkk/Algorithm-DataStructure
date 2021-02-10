@@ -24,3 +24,7 @@ func (person *Person) SetName(name string) {
 func (person Person) Check() {
 	fmt.Printf("%s is a person\n", person.name)
 }
+
+func (person Person) Speak() {
+	fmt.Printf("%s said that I am a person\n", person.name)
+}

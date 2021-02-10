@@ -15,3 +15,7 @@ func NewMan(name string) *Man {
 func (man Man) Check() {
 	fmt.Printf("%s is a man\n", man.name)
 }
+
+func (man Man) Speak() {
+	fmt.Printf("%s said that I am a man\n", man.name)
+}

@@ -20,4 +20,11 @@ func main() {
 	man.SetName("hyuk2")
 	fmt.Println(man.GetName())
 	man.Check()
+
+	woman := oop.NewWoman("sun")
+
+	oop.Speak(person)
+	oop.Speak(man)
+	oop.Speak(woman)
+
 }
