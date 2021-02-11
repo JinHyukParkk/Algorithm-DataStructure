@@ -3,12 +3,13 @@ package oop
 import "fmt"
 
 type Person struct {
-	name string
+	security_number int
+	name            string
 }
 
 // 생성자
-func NewPerson(name string) *Person {
-	return &Person{name: name}
+func NewPerson(security_number int, name string) *Person {
+	return &Person{security_number: security_number, name: name}
 }
 
 // 캡슐화

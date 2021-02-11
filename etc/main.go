@@ -9,13 +9,13 @@ import (
 func main() {
 	// algo.Multiplication()
 
-	person := oop.NewPerson("hyuk")
+	person := oop.NewPerson(123, "hyuk")
 	fmt.Println(person.GetName())
 	person.SetName("hyuk2")
 	fmt.Println(person.GetName())
 	person.Check()
 
-	man := oop.NewMan("hyuk")
+	man := oop.NewMan(345, "hyuk")
 	fmt.Println(man.GetName())
 	man.SetName("hyuk2")
 	fmt.Println(man.GetName())

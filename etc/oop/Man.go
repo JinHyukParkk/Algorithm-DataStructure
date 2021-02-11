@@ -7,8 +7,8 @@ type Man struct {
 	*Person
 }
 
-func NewMan(name string) *Man {
-	return &Man{Person: NewPerson(name)}
+func NewMan(security_number int, name string) *Man {
+	return &Man{Person: NewPerson(security_number, name)}
 }
 
 // Override
