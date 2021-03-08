@@ -5,7 +5,6 @@ public class Knumber {
         int[] answer = new int[commands.length];
 
         for (int i = 0; i < commands.length; i++) {
-            // 원래 소스
             // int gap = commands[i][1] - commands[i][0] + 1;
             // int[] sortArray = new int[gap];
             
@@ -14,7 +13,7 @@ public class Knumber {
             // }
 
             int[] sortArray = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
-            
+
             Arrays.sort(sortArray);
 
             answer[i] = sortArray[commands[i][2] - 1];
