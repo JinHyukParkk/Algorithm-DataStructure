@@ -1,5 +1,6 @@
 public class StockPrice {
     public int[] solution(int[] prices) {
+        // 스택으로 구현 가능
         int[] answer = new int[prices.length];
 
         for (int i = 0; i < prices.length; i++) {
