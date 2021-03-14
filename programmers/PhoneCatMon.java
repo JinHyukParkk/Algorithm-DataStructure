@@ -11,9 +11,7 @@ public class PhoneCatMon {
             }
         }
 
-        int answer = Math.min(nums.length/2, al.size());
-
-        return answer;
+        return Math.min(nums.length/2, al.size());
     }
 
     public static void main(String[] args) {
