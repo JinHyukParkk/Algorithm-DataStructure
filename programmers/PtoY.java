@@ -1,19 +1,18 @@
 public class PtoY {
     boolean solution(String s) {
-        boolean answer = true;
-
-        int p_cnt = 0, y_cnt = 0;
+        s = s.toLowerCase();
+        int cnt = 0;
 
         char[] s_char = s.toCharArray();
         
         for (int i =0; i<s_char.length; i++) {
             if (s_char[i] == 'p'|| s_char[i] == 'P') {
-                p_cnt++;
+                cnt++;
             } else if (s_char[i] == 'y'||s_char[i] == 'Y') {
-                y_cnt++;
+                cnt--;
             }
         }
-        if (p_cnt == y_cnt) {
+        if (cnt == 0) {
             return true;
         } else {
             return false;
