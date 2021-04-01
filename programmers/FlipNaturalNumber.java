@@ -1,6 +1,4 @@
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class FlipNaturalNumber {
     public int[] solution(long n) {
