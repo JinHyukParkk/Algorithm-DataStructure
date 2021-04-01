@@ -1,5 +1,4 @@
 
-
 public class FlipNaturalNumber {
     public int[] solution(long n) {
         String tempStr = Long.toString(n);
