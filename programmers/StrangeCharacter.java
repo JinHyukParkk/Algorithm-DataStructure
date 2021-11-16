@@ -28,11 +28,7 @@ public class StrangeCharacter {
     public static void main(String[] args) {
         StrangeCharacter ss = new StrangeCharacter();
         //아래는 테스트로 출력해 보기 위한 코드입니다.
-        String test[] = {"sun", "bed", "car"};
-        String[] ans = ss.solution(test, 1);
-        for (int i = 0; i < ans.length; i++) {
-            System.out.println(ans[i]);
-        }
+
         
     }
 }
