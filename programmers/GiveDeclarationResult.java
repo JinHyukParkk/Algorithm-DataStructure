@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 
 class GiveDeclarationResult {
@@ -9,7 +10,7 @@ class GiveDeclarationResult {
         // 신고 기록 : report ([신고한 유저] [신고 당한 사람])  ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
         // 정지될 신고 개수 : k
 
-        HashMap<String, ArrayList<String>> declareList = new HashMap<String, ArrayList<String>>();
+        HashMap<String, ArrayList<String>> declareMap = new HashMap<String, ArrayList<String>>();
         HashMap<String, Integer> stopList = new HashMap<>();
         ArrayList<String> stopUser = new ArrayList<>();
         int[] result = new int[id_list.length];
@@ -18,53 +19,39 @@ class GiveDeclarationResult {
             String[] parseRepo = repo.split("\\s+");
 
             // 신고한 사람
-            String deUser = parseRepo[0];           // muzi
+            String reportUser = parseRepo[0];
             // 신고 당한 사람
-            String declaredUser = parseRepo[1];     // frodo
+            String targetUser = parseRepo[1];
 
-            // hashmap 값이 아무것도 없을 때 초기 선언
-            if (declareList.get(deUser) == null) {
-                declareList.put(deUser, new ArrayList<>());
+            ArrayList<String> list = declareMap.getOrDefault(reportUser, new ArrayList<String>());
+            if (!list.contains(targetUser)){
+                list.add(targetUser);
             }
 
             // 신고한 사람의 신고 리스트를 불러와서 추가하고, '신고 리스트 자료형'에 넣는 로직
-            ArrayList<String> list = declareList.get(deUser);
-            list.add(declaredUser);
-            declareList.put(deUser, list);  
+            declareMap.put(reportUser, list);  
             
+            int count = stopList.getOrDefault(targetUser, 0) + 1;
             // 신고 당한 사람의 신고 수 넣는 로직
-            if (stopList.get(declaredUser) == null) {
-                stopList.put(declaredUser, 1);
-            } else {
-                int declareCount = stopList.get(declaredUser);
-                stopList.put(declaredUser, declareCount + 1);
-            }
-        }
+            stopList.put(targetUser, count);
 
-        // 정지 당한 유저 ArrayList 넣는 로직
-        Iterator<String> keys = stopList.keySet().iterator();
-
-        while (keys.hasNext()) {
-            String key = keys.next();
-            int count = stopList.get(key);
-            if (count >= 2) {
-                stopUser.add(key);
+            if (count >= 2 && stopUser.contains(targetUser)) {
+                stopUser.add(targetUser);
             }
         }
 
         for (int i = 0; i < id_list.length; i++) {
             int count = 0;
 
-            if (declareList.get(id_list[i]) == null) continue;
+            if (declareMap.get(id_list[i]) == null) continue;
 
-            ArrayList<String> list = declareList.get(id_list[i]);
+            ArrayList<String> list = declareMap.get(id_list[i]);
 
             for (String declareId : list) {
                 // 정지한 유저가 있는지
                 if (stopUser.contains(declareId)) {
                     count++;
                 }
-
             }
 
             result[i] = count;
@@ -73,6 +60,43 @@ class GiveDeclarationResult {
         return result;
     }
 
+
+    public int[] solution1(String[] id_list, String[] report, int k) {
+        int[] result = new int[id_list.length];
+        Map<String, Integer> index = new HashMap<>();
+        Map<String, List<Integer>> list = new HashMap<>();
+		
+        for(int i = 0 ; i<id_list.length ; i++) {
+			index.put(id_list[i], i);
+		}
+        
+        for(String rep : report) {
+        	String[] parseRepo = rep.split(" ");
+        	String reportUser = parseRepo[0];
+            String targetUser = parseRepo[1];
+
+            if(!list.containsKey(targetUser)) {
+                list.put(targetUser, new ArrayList<>());
+            }
+            
+        	List<Integer> tmp = list.get(targetUser);
+        	
+        	if(!tmp.contains(index.get(reportUser))) {
+                tmp.add(index.get(reportUser));
+            }
+        }
+        
+        for(int i=0 ; i<id_list.length ; i++) {
+        	String id = id_list[i];
+        	if(list.containsKey(id) && list.get(id).size() >= k) {
+	        	for(int idx : list.get(id)) {
+	        		result[idx]++;
+	        	}
+        	}
+        }
+        
+        return result;
+    }
     public static void main(String[] args) {
         GiveDeclarationResult giveDeclarationResult = new GiveDeclarationResult();
 
@@ -80,7 +104,7 @@ class GiveDeclarationResult {
         String[] givenReport = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"}; // muzi, apeach, frodo 
         int k = 2;
 
-        int[] result = giveDeclarationResult.solution(givenIdList, givenReport, k);
+        int[] result = giveDeclarationResult.solution1(givenIdList, givenReport, k);
         
         for (int i : result) {
             System.out.println(i);
