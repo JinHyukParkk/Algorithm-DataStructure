@@ -62,15 +62,3 @@ public class LottoHighRow {
      * 7 - C
      */
 }
-
-
-
-a (input) --> [ 알고리즘 ] --> b(output)
-
-2600원 
-
-500원 
-100원
-50원
-
-최소 동전 개수 구하기 
