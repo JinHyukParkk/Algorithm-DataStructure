@@ -97,6 +97,7 @@ class GiveDeclarationResult {
         
         return result;
     }
+
     public static void main(String[] args) {
         GiveDeclarationResult giveDeclarationResult = new GiveDeclarationResult();
 
@@ -111,7 +112,6 @@ class GiveDeclarationResult {
         }
     }
 }
-
 
 /*
 1. '신고한 유저, 신고 당한 유저들' - 신고 리스트 자료형
