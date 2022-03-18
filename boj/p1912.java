@@ -10,6 +10,7 @@ public class p1912 {
     int n;
     int arr[];
     int dp[];
+
     void input() throws IOException{
         n = Integer.parseInt(bufferedReader.readLine());
         arr = new int[n];
@@ -21,10 +22,10 @@ public class p1912 {
     }
     void solve(){
         dp[0] = arr[0];
-        int max =arr[0];
+        int max = arr[0];
         for (int i = 1; i < n; i++) {
-            dp[i] = Math.max(0,dp[i-1])+arr[i];
-            max = max<dp[i]?dp[i]:max;
+            dp[i] = Math.max(0, dp[i-1]) + arr[i];
+            max = Math.max(max, dp[i]);
         }
         System.out.println(max);
     }
@@ -39,3 +40,9 @@ public class p1912 {
         }
     }
 }
+
+/**
+ * - i번째에서의 최대값 : (i-1번째의 최대값 + 현재값) vs 현재값
+ * - 총 최대값 : 현재 최대값 vs i번째에서의 최대값
+ * 
+ */
