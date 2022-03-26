@@ -39,7 +39,6 @@ public class NewId {
                 if (dot.length() > 1) {
                     answer = answer.replace(dot, ".");
                 }
-
             }
         }
 
