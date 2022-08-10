@@ -1,1 +1,3 @@
 .vscode
+algoTest/src/main/java/com/example/algotest/algo/CircleGreenAndRed.java
+algoTest/src/test/java/com/example/algotest/algo/CircleGreenAndRedTest.java
