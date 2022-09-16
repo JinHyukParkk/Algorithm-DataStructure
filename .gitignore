@@ -3,3 +3,7 @@ algoTest/src/main/java/com/example/algotest/algo/CircleGreenAndRed.java
 algoTest/src/test/java/com/example/algotest/algo/CircleGreenAndRedTest.java
 algoTest/src/main/java/com/example/algotest/exam
 .idea
+algoTest/src/main/java/com/example/algotest/algo/ConvertString.java
+algoTest/src/main/java/com/example/algotest/algo/FriendsTotal.java
+algoTest/src/test/java/com/example/algotest/algo/ConvertStringTest.java
+algoTest/src/test/java/com/example/algotest/algo/FriendsTotalTest.java
