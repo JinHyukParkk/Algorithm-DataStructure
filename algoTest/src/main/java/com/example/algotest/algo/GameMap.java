@@ -7,12 +7,15 @@ public class GameMap {
 
     int[] moveX = {1, 0, -1, 0};
     int[] moveY = {0, 1, 0, -1};
-    int result = 0;
 
     public int solution(int[][] maps) {
-        int[][] visited = new int[maps.length][maps[0].length];
+        int result;
+        int mapsLength = maps.length;
+        int mapsElementLength = maps[0].length;
+        int[][] visited = new int[mapsLength][mapsElementLength];
 
         bfs(maps, visited);
+        result = visited[mapsLength - 1][mapsElementLength - 1];
 
         if (result == 0) {
             result = -1;
@@ -43,7 +46,7 @@ public class GameMap {
 
                 if (visited[nextX][nextY] == 0 && maps[nextX][nextY] == 1) {
                     visited[nextX][nextY] = visited[currentX][currentY] + 1;
-                    queue.add(new int[][]{nextX, nextY});
+                    queue.add(new int[]{nextX, nextY});
                 }
             }
         }
