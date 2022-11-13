@@ -10,7 +10,6 @@ public class CoinChange {
     }
 
     private int recusive(int[] coins, int[] amounts, int amount) {
-
         if (amount < 0) {
             return Integer.MAX_VALUE - 1;
         }
@@ -20,10 +19,11 @@ public class CoinChange {
         if (amounts[amount] > 0) {
             return amounts[amount];
         }
+
         int min = Integer.MAX_VALUE - 1;
 
-        for (int i = 0; i < coins.length; i++) {
-            min = Math.min(min, recusive(coins, amounts, amount - coins[i]) + 1);
+        for (int coin : coins) {
+            min = Math.min(min, recusive(coins, amounts, amount - coin) + 1);
         }
 
         return amounts[amount] = min;

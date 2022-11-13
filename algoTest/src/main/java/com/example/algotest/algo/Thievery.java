@@ -5,7 +5,9 @@ import java.util.Arrays;
 public class Thievery {
 
     /**
-     * 첫 번째를 선택하는 경우와 선택하지 않는 경우
+     * 첫 번째를 선택하는 경우
+     * 첫 번째를 선택하지 않는 경우
+     *
      * @param money
      * @return
      */
@@ -28,7 +30,9 @@ public class Thievery {
             dpWithoutFirst[i] = Math.max(dpWithoutFirst[i - 1], dpWithoutFirst[i - 2] + money[i]);
             answer = Math.max(dpWithoutFirst[i], answer);
 
-            if (i == money.length - 1) {break;}
+            if (i == money.length - 1) {
+                break;
+            }
             dpWithFirst[i] = Math.max(dpWithFirst[i - 1], dpWithFirst[i - 2] + money[i]);
             answer = Math.max(dpWithFirst[i], answer);
 
